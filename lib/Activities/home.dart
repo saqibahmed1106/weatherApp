@@ -25,22 +25,22 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    Map<dynamic, dynamic>? info = ModalRoute.of(context)?.settings.arguments as Map<dynamic, dynamic>?;
-    String temp = ((info?['temp_value']).toString()).substring(0,4);
-    String air_speed = ((info?['airSpeed_value']).toString()).substring(0,4);
-    if(temp == "NA")
-      {
-        print("NA");
-      }else{
-      String temp = ((info?['temp_value']).toString()).substring(0,4);
-      String air_speed = ((info?['airSpeed_value']).toString()).substring(0,4);
-      }
+    Map<dynamic, dynamic>? info =
+        ModalRoute.of(context)?.settings.arguments as Map<dynamic, dynamic>?;
+    String temp = ((info?['temp_value']).toString()).substring(0, 4);
+    String air_speed = ((info?['airSpeed_value']).toString()).substring(0, 4);
+    if (temp == "NA") {
+      print("NA");
+    } else {
+      String temp = ((info?['temp_value']).toString()).substring(0, 4);
+      String air_speed = ((info?['airSpeed_value']).toString()).substring(0, 4);
+    }
     String icon = info?['icon_value'];
     String latitude = info?['latitude_value'];
     String longitude = info?['longitude_value'];
     String hum = info?['hum_value'];
     String desc = info?['desc_value'];
-    print (icon);
+    print(icon);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
@@ -68,17 +68,18 @@ class _HomeState extends State<Home> {
                       borderRadius: BorderRadius.circular(24)),
                   child: Row(
                     children: [
-                    GestureDetector(
+                      GestureDetector(
                         onTap: () {
-                          if((searchController.text).replaceAll(" ", "") == "")
-                            {
-                              print("Blank Search");
-                            }else{
-                            Navigator.pushReplacementNamed(context, "/loading", arguments: {
-                              "searchText" : searchController.text,
-                            });
+                          if ((searchController.text).replaceAll(" ", "") ==
+                              "") {
+                            print("Blank Search");
+                          } else {
+                            Navigator.pushReplacementNamed(context, "/loading",
+                                arguments: {
+                                  "searchText": searchController.text,
+                                });
                           }
-                            },
+                        },
                         child: Container(
                           child: Icon(
                             Icons.search,
@@ -110,14 +111,19 @@ class _HomeState extends State<Home> {
                         padding: EdgeInsets.all(10),
                         child: Row(
                           children: [
-                            Image.network("https://openweathermap.org/img/wn/$icon@2x.png"),
-                            SizedBox(width: 20,),
+                            Image.network(
+                                "https://openweathermap.org/img/wn/$icon@2x.png"),
+                            SizedBox(
+                              width: 20,
+                            ),
                             Column(
                               children: [
-                                Text("$desc",style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold
-                                ),),
+                                Text(
+                                  "$desc",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
                                 // Text("$latitude",style: TextStyle(
                                 //     fontSize: 16,
                                 //     fontWeight: FontWeight.bold),),
@@ -150,12 +156,14 @@ class _HomeState extends State<Home> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("$temp", style: TextStyle(
-                                  fontSize: 70
-                                ),),
-                                Text("C", style: TextStyle(
-                                  fontSize: 30
-                                ),)
+                                Text(
+                                  "$temp",
+                                  style: TextStyle(fontSize: 70),
+                                ),
+                                Text(
+                                  "C",
+                                  style: TextStyle(fontSize: 30),
+                                )
                               ],
                             )
                           ],
@@ -183,11 +191,14 @@ class _HomeState extends State<Home> {
                                 Icon(WeatherIcons.day_windy),
                               ],
                             ),
-                            SizedBox(height: 30,),
-                            Text("$air_speed", style: TextStyle(
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold
-                            ),),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Text(
+                              "$air_speed",
+                              style: TextStyle(
+                                  fontSize: 40, fontWeight: FontWeight.bold),
+                            ),
                             Text("km/hr")
                           ],
                         ),
@@ -209,11 +220,14 @@ class _HomeState extends State<Home> {
                                 Icon(WeatherIcons.humidity),
                               ],
                             ),
-                            SizedBox(height: 30,),
-                            Text("$hum", style: TextStyle(
-                                fontSize: 40,
-                                fontWeight: FontWeight.bold
-                            ),),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Text(
+                              "$hum",
+                              style: TextStyle(
+                                  fontSize: 40, fontWeight: FontWeight.bold),
+                            ),
                             Text("Percent")
                           ],
                         ),
@@ -221,7 +235,9 @@ class _HomeState extends State<Home> {
                     )
                   ],
                 ),
-                SizedBox(height: 60,),
+                SizedBox(
+                  height: 60,
+                ),
                 Container(
                   padding: EdgeInsets.all(15),
                   child: Column(
